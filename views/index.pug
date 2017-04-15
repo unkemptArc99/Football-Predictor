@@ -1,0 +1,90 @@
+extends layout
+
+block content
+      style.
+        body{
+          background-image: url("/images/polygon-background9-preview.jpg");
+          color: #000000;
+        }
+        .demo-card-wide.mdl-card {
+          width: 1024px;
+          height: 320px;
+        }
+        .demo-card-wide > .mdl-card__title {
+          color: #096873;
+          height: 2000px;
+          background-image: url("/images/82a66c6b69a61564494a682e4fb0d704.jpg");
+        }
+        .demo-card-wide > .mdl-card__menu {
+          color: #dddddd;
+        }
+        .image{
+          content:url("/images/82a66c6b69a61564494a682e4fb0d704.jpg");
+        }
+      body
+          br
+          br
+          br
+          br
+          br
+          div.container(class = "demo-card-wide mdl-card mdl-shadow--2dp" )
+              div.jumbatron(align = 'center')
+                  h1(align = 'center') Premier League Prediction Simplified
+                  br
+                  p You just need to put in your two teams and we will give you the best prediction we can :)
+                  form(name = "main",method="GET",action="")
+                      div.form-group()
+                          label.col-sm-offset-1.col-sm-3 Home Team Name
+                          div.col-sm-4
+                              select(name = "Teams")
+                                  option(name="AFC Bournemouth") AFC Bournemouth
+                                  option(name="Arsenal") Arsenal
+                                  option(name="Burnley") Burnley
+                                  option(name="Chelsea") Chelsea
+                                  option(name="Crystal Palace") Crystal Palace
+                                  option(name="Everton") Everton
+                                  option(name="Hull City") Hull City
+                                  option(name="Leicester City") Leicester City
+                                  option(name="Liverpool") Liverpool AFC
+                                  option(name="Manchester City") Manchester City
+                                  option(name="Manchester United") Manchester United
+                                  option(name="Middlesbrough") Middlesbrough
+                                  option(name="Southampton") Southampton
+                                  option(name="Stoke City") Stoke City
+                                  option(name="Sunderland") Sunderland
+                                  option(name="Swansea") Swansea City FC
+                                  option(name="Tottenham Hotspur") Tottenham Hotspurs
+                                  option(name="Watford") Watford
+                                  option(name="West Bromwich Albion") West Bromwich Albion
+                                  option(name="West Ham United") West Ham United 
+                      br
+                      br
+                      div.form-group
+                          label.col-sm-offset-1.col-sm-3 Away Team Name
+                          div.col-sm-4
+                              select(name = "Teams")
+                                  option(name="AFC Bournemouth") AFC Bournemouth
+                                  option(name="Arsenal") Arsenal
+                                  option(name="Burnley") Burnley
+                                  option(name="Chelsea") Chelsea
+                                  option(name="Crystal Palace") Crystal Palace
+                                  option(name="Everton") Everton
+                                  option(name="Hull City") Hull City
+                                  option(name="Leicester City") Leicester City
+                                  option(name="Liverpool") Liverpool AFC
+                                  option(name="Manchester City") Manchester City
+                                  option(name="Manchester United") Manchester United
+                                  option(name="Middlesbrough") Middlesbrough
+                                  option(name="Southampton") Southampton
+                                  option(name="Stoke City") Stoke City
+                                  option(name="Sunderland") Sunderland
+                                  option(name="Swansea") Swansea City FC
+                                  option(name="Tottenham Hotspur") Tottenham Hotspurs
+                                  option(name="Watford") Watford
+                                  option(name="West Bromwich Albion") West Bromwich Albion
+                                  option(name="West Ham United") West Ham United 
+                      br
+                      br            
+                      div.form-group(align = 'center')
+                          div.col-sm-offset-2.col-sm-8
+                              button.login.btn.btn-primary(type='submit') See the Predictions!

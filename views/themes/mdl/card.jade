@@ -1,0 +1,27 @@
+.mdl-card.mdl-shadow--2dp(data-bind='style:style, visible:visible')
+  // ko if:_hasTitle
+  // ko if:_hasImage
+  .mdl-card__title.mdl-card--expand(data-bind='style:_titleStyle')
+    h2.mdl-card__title-text(data-bind='text:title')
+  // /ko
+  // ko ifnot:_hasImage
+  .mdl-card__title.mdl-card--expand
+    h2.mdl-card__title-text(data-bind='text:title')
+  // /ko
+  // /ko
+  .mdl-card__supporting-text(data-bind="template:{ name:_templateOf, foreach:items }")
+  // ko if:_hasButtons
+  .mdl-card__actions.mdl-card--border
+    // ko foreach:buttons
+    a.mdl-button.mdl-js-button.mdl-js-ripple-effect(data-bind="text:title, click:clicked, css:{ 'mdl-button--colored':_isPrimary , 'mdl-button--accent':_isAccent }")
+    // /ko
+  // /ko
+  // ko with:menu
+  .mdl-card__menu
+    button(data-bind="attr:{ id:id }").mdl-button.mdl-js-button.mdl-button--icon
+      i.material-icons(data-bind='text:icon')
+    ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(data-bind="attr:{ 'for':id }")
+      // ko foreach:items
+      li.mdl-menu__item(data-bind="attr:{ disabled:disabled }, text:title, click:clicked")
+      // /ko
+  // /ko
