@@ -55,12 +55,12 @@ app.get('/scrape', function(req, res){
                  
               })
 
-              var str1 = "Manchester United";
-              var str2 = "Chelsea";
+              var str1 = "Tottenham Hotspur";
+              var str2 = "Hull City";
               var i1,i2;
 
               for(var i = 0; i < 20; i++){
-                if(str1 == array[i].name){console.log(Math.pow(-1.56,1.7));
+                if(str1 == array[i].name){
                     i1 = i;
                 }
                 if(str2 == array[i].name){
@@ -97,8 +97,26 @@ app.get('/scrape', function(req, res){
               var pwin1 = 0;
               var pwin2 = 0;
               var draw = 0;
+              var max_key1 = 0;
+              var max1 = 0;
+              var max_key2 = 0;
+              var max2 = 0;console.log(Math.pow(-1.56,1.7));
+              var max_key3 = 0;
+              var max3 = 0;
 
-              for(var i = 0;i<=6;++i){
+              for(var i = 0;i <= 10;++i){
+                if(max1 < (Math.pow(2.31,-Math.pow((i/gf1),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf1),gamma)))*(Math.pow(2.31,-Math.pow((i/ga2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga2),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/ga1),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/gf2),gamma)))){
+                    max_key1 = i;
+                    max1 = (Math.pow(2.31,-Math.pow((i/gf1),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf1),gamma)))*(Math.pow(2.31,-Math.pow((i/ga2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga2),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/ga1),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/gf2),gamma)));
+                }
+                if(max2 < (Math.pow(2.31,-Math.pow((i/gf2),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf2),gamma)))*(Math.pow(2.31,-Math.pow((i/ga1),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga1),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/ga2),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/gf1),gamma)))){
+                    max_key2 = i;
+                    max1 = (Math.pow(2.31,-Math.pow((i/gf2),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf2),gamma)))*(Math.pow(2.31,-Math.pow((i/ga1),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga1),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/ga2),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/gf1),gamma)));
+                }
+                if(max3 < (Math.pow(2.31,-Math.pow((i/gf1),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf1),gamma)))*(Math.pow(2.31,-Math.pow((i/ga2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga2),gamma)))*(Math.pow(2.31,-Math.pow((i/gf2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/gf2),gamma)))*(Math.pow(2.31,-Math.pow((i/ga1),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga1),gamma)))){
+                    max_key3 = i;
+                    max3 = (Math.pow(2.31,-Math.pow((i/gf1),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf1),gamma)))*(Math.pow(2.31,-Math.pow((i/ga2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga2),gamma)))*(Math.pow(2.31,-Math.pow((i/gf2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/gf2),gamma)))*(Math.pow(2.31,-Math.pow((i/ga1),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga1),gamma)));
+                }
                 pwin1 = pwin1 + (Math.pow(2.31,-Math.pow((i/gf1),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf1),gamma)))*(Math.pow(2.31,-Math.pow((i/ga2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga2),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/ga1),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/gf2),gamma)));
                 pwin2 = pwin2 + (Math.pow(2.31,-Math.pow((i/gf2),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf2),gamma)))*(Math.pow(2.31,-Math.pow((i/ga1),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga1),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/ga2),gamma)))*(1 - Math.pow(2.31,-Math.pow((i/gf1),gamma)));
                 draw = draw + (Math.pow(2.31,-Math.pow((i/gf1),gamma)) - Math.pow(2.31,-Math.pow(((i + 1)/gf1),gamma)))*(Math.pow(2.31,-Math.pow((i/ga2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga2),gamma)))*(Math.pow(2.31,-Math.pow((i/gf2),gamma)) - Math.pow(2.31,-Math.pow((i + 1/gf2),gamma)))*(Math.pow(2.31,-Math.pow((i/ga1),gamma)) - Math.pow(2.31,-Math.pow((i + 1/ga1),gamma)));
@@ -106,17 +124,21 @@ app.get('/scrape', function(req, res){
               if(pwin1 > pwin2){
                   if(pwin1 > 1.5 * pwin2){
                       console.log(str1,"wins!!");
+                      console.log(max_key1,"-",max_key2);
                   }
                   else{
                       console.log("draw");
+                      console.log(max_key3,"-",max_key3);
                   }
               }
               else{
                   if(pwin2 > 1.5 * pwin1){
                       console.log(str2,"wins!!");
+                      console.log(max_key1,"-",max_key2);
                   }
                   else{
                       console.log("draw");
+                      console.log(max_key3,"-",max_key3);
                   }
               }
               //console.log(array);
