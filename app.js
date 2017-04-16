@@ -10,6 +10,10 @@ var users = require('./routes/users');
 
 var app = express();
 
+var http = require('http');
+var fs = require('fs');
+var request = require('request');
+var cheerio = require('cheerio');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -25,6 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
+app.configure('development', function(){
+  app.set('address', 'localhost');
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -37,6 +46,19 @@ app.get('/',function(req,res) {
     title: 'Premier League Predictor'
   });
 });
+
+app.get('/', function(req, res){
+  res.render('index', {
+    address: app.settings.address,
+    port: app.settings.port
+});
+});
+
+if (!module.parent) {
+  app.listen(app.settings.port);
+  console.log("Server listening on port %d",
+app.settings.port);
+}
 
 //for unserved browser files
 app.use(express.static(__dirname + "/public"));
@@ -51,5 +73,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

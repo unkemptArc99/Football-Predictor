@@ -8,7 +8,7 @@ block content
         }
         .demo-card-wide.mdl-card {
           width: 1024px;
-          height: 320px;
+          height: 540px;
         }
         .demo-card-wide > .mdl-card__title {
           color: #096873;
@@ -27,16 +27,17 @@ block content
           br
           br
           br
+          form(method = "GET")
           div.container(class = "demo-card-wide mdl-card mdl-shadow--2dp" )
               div.jumbatron(align = 'center')
                   h1(align = 'center') Premier League Prediction Simplified
                   br
                   p You just need to put in your two teams and we will give you the best prediction we can :)
-                  form(name = "main",method="GET",action="")
+                  
                       div.form-group()
                           label.col-sm-offset-1.col-sm-3 Home Team Name
                           div.col-sm-4
-                              select(name = "Teams")
+                              select(name = "HT")
                                   option(name="AFC Bournemouth") AFC Bournemouth
                                   option(name="Arsenal") Arsenal
                                   option(name="Burnley") Burnley
@@ -62,7 +63,7 @@ block content
                       div.form-group
                           label.col-sm-offset-1.col-sm-3 Away Team Name
                           div.col-sm-4
-                              select(name = "Teams")
+                              select(name = "AT")
                                   option(name="AFC Bournemouth") AFC Bournemouth
                                   option(name="Arsenal") Arsenal
                                   option(name="Burnley") Burnley
@@ -84,7 +85,24 @@ block content
                                   option(name="West Bromwich Albion") West Bromwich Albion
                                   option(name="West Ham United") West Ham United 
                       br
-                      br            
+                      br
+                      div(id = "demo")
+                        script.
+                          function Redirect(){
+                            window.location = "http://localhost:8001/scrape";
+                          }
+                          function load()
+                          {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.open("GET", "http://localhost:8001/scrape", true);
+                            xhttp.onreadystatechange = function(){
+                              if (this.readyState === 4){
+                                document.getElementById("demo").innerHTML = xhttp.responseText;
+                                alert(xhttp.responseText);
+                              }               
+                            };
+                            xhttp.send(null);
+                          }
                       div.form-group(align = 'center')
                           div.col-sm-offset-2.col-sm-8
-                              button.login.btn.btn-primary(type='submit') See the Predictions!
+                              button.login.btn.btn-primary(onClick='load()') See the Predictions!
